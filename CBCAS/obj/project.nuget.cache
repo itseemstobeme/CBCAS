@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "CSzDzp5PLTjul7ljjAPURiZVrBVXUO19CBQbDvWUIemA+EDWLITYiWB9qt/l0WKd07guQS4ryI4VRfZwZL3uJw==",
+  "dgSpecHash": "f9q0ZjwzsFaO9Ky/hXYdqMbExOgVtu+RIPTojYZWQ90jNtLMFJ1KtpUTWEf3zJTLZxjQIcMyAmOSxJVAFexp7w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Acer\\Desktop\\PROJECT\\CBCAS\\CBCAS.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Acer\\.nuget\\packages\\materialdesigncolors\\2.0.6\\materialdesigncolors.2.0.6.nupkg.sha512",
+    "C:\\Users\\Acer\\.nuget\\packages\\materialdesignthemes\\4.5.0\\materialdesignthemes.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }

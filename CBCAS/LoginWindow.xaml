@@ -1,0 +1,121 @@
+﻿<Window x:Class="CBCAS.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CBCAS"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="500" Width="350" WindowStartupLocation="CenterScreen"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        ResizeMode="NoResize" MouseDown="LoginWindow_MouseDown">
+
+
+    <Grid Background="Transparent">
+
+        <Border CornerRadius="20">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="GhostWhite" Offset="0"/>
+                    <GradientStop Color="CornflowerBlue" Offset="3"/>
+                    <GradientStop Color="LightSkyBlue" Offset="2"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <StackPanel>
+            
+            <!--Logo Image-->
+            <Image Name="Logo" Source="pack://application:,,,/Images/Logo3.png" Margin ="60,50,80,40" Height="94" Width="200"
+                   Stretch="Uniform"/>
+
+            <TabControl  Height="300" Background="Transparent" BorderThickness="0">
+                
+                <!--TEACHER LOGIN TAB-->
+                <TabItem Name="TeacherLogin" Header="Teacher Login" Foreground="DodgerBlue"
+                      FontFamily="pack://application:,,,/Fonts/#Star Jedi" FontSize="15" TabIndex="0">
+                    <StackPanel Margin="0,20,0,0">
+                        <Label FontWeight="Bold" FontSize="20" FontFamily="Wintermesh"
+                               Foreground="LightSeaGreen">
+                            Teacher ID :
+                        </Label>
+                        <TextBox Background="WhiteSmoke" Name="TeacherID" Foreground="Black"
+                                 FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Margin="0,5"/>
+
+
+                        <Label Margin="0,15,0,0" FontWeight="Bold" FontSize="20" FontFamily="Wintermesh"
+                               Foreground="LightSeaGreen" >
+                            Password :
+                        </Label>
+                        <PasswordBox Background="WhiteSmoke" Name="TeacherPassword" Foreground="Black"
+                                 FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Margin="0,5"/>
+
+                        <Button x:Name="TeacherLoginButton" FontWeight="Normal" FontSize="20"
+                            Background="Transparent" BorderThickness="0.5"  
+                            FontFamily="pack://application:,,,/Fonts/#Star Jedi" Width="150" Foreground="RoyalBlue"
+                            Click="TeacherLoginButton_Click" Height="40" Margin="0,15,0,0">
+                            login
+                        </Button>
+                        <Label HorizontalAlignment="Center" Foreground="RoyalBlue" PreviewMouseDown="WINDOWEXIT"
+                               Margin="0,5,0,0">
+                            exit
+                        </Label>
+                        
+                    </StackPanel>
+                </TabItem>
+                
+                <!--STUDENT LOGIN TAB-->
+                <TabItem Name="StudentLogin" Header="Student Login" Foreground="DodgerBlue"
+                      FontFamily="pack://application:,,,/Fonts/#Star Jedi" FontSize="15" TabIndex="0">
+                    <StackPanel Margin="0,20,0,0">
+                        <Label FontWeight="Bold" FontSize="20" FontFamily="Wintermesh"
+                               Foreground="LightSeaGreen">
+                            Student ID(Roll No) :
+                        </Label>
+                        <TextBox Background="WhiteSmoke" Name="StudentID" Foreground="Black"
+                                 FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Margin="0,5"/>
+
+
+                        <Label Margin="0,15,0,0" FontWeight="Bold" FontSize="20" FontFamily="Wintermesh"
+                               Foreground="LightSeaGreen" >
+                            Password :
+                        </Label>
+                        <PasswordBox Background="WhiteSmoke" Name="StudentPassword" Foreground="Black"
+                                 FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Margin="0,5"/>
+
+                        <Button x:Name="StudentLoginButton" FontWeight="Normal" FontSize="20"
+                            Background="Transparent" BorderThickness="0.5"  
+                            FontFamily="pack://application:,,,/Fonts/#Star Jedi" Width="150" Foreground="RoyalBlue"
+                            Click="TeacherLoginButton_Click" Height="40" Margin="0,15,0,0">
+                            login
+                        </Button>
+                        <Label HorizontalAlignment="Center" Foreground="RoyalBlue" PreviewMouseDown="WINDOWEXIT"
+                               Margin="0,5,0,0">
+                            exit
+                        </Label>
+
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+            
+            <!--Login Buttons-->
+            <!--
+            <Button x:Name="TeacherLogin" FontWeight="Normal" FontSize="20"
+                    Background="Transparent" BorderThickness="1"  
+                    FontFamily="pack://application:,,,/Fonts/#Star Jedi" Width="200" Foreground="DodgerBlue" Margin="5"
+                    Click="TeacherLogin_Click">
+                Teacher Login
+            </Button>
+            
+            <Button x:Name="StudentLogin" FontWeight="Normal" FontSize="20"
+                    Background="Transparent" BorderThickness="1"  
+                    FontFamily="pack://application:,,,/Fonts/#Star Jedi" Width="200" Foreground="DodgerBlue"
+                    Margin="20">Student Login
+            </Button>
+            -->
+        </StackPanel>
+
+    </Grid>
+    
+    
+
+</Window>
