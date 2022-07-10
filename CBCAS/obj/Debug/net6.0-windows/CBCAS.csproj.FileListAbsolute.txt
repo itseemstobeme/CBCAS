@@ -38,3 +38,7 @@ C:\Users\Acer\Desktop\PROJECT\CBCAS\bin\Debug\net6.0-windows\Ubiety.Dns.Core.dll
 C:\Users\Acer\Desktop\PROJECT\CBCAS\bin\Debug\net6.0-windows\K4os.Compression.LZ4.dll
 C:\Users\Acer\Desktop\PROJECT\CBCAS\bin\Debug\net6.0-windows\K4os.Hash.xxHash.dll
 C:\Users\Acer\Desktop\PROJECT\CBCAS\bin\Debug\net6.0-windows\MySql.Data.xml
+C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\TeacherDegree.g.cs
+C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\TeacherDegree.baml
+C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\TeacherBranch.g.cs
+C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\TeacherBranch.baml

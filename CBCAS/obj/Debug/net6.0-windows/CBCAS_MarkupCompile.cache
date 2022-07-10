@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Acer\Desktop\PROJECT\CBCAS\App.xaml
-3330787346
+5-1870407637
 1562103554
-51774464335
+7872255483
 197-1904140925
-LoginWindow.xaml;StudentWindow.xaml;TeacherWindow.xaml;
+LoginWindow.xaml;StudentWindow.xaml;TeacherBranch.xaml;TeacherDegree.xaml;TeacherWindow.xaml;
 
 False
 
