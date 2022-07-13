@@ -1,0 +1,78 @@
+﻿<Page x:Class="CBCAS.TeacherSemester"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CBCAS"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="700"
+      Title="TeacherSemester" >
+
+    <Page.Resources>
+        <Style x:Key="StartButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Button FontFamily="pack://application:,,,/Fonts/#Star Jedi" FontSize="25" 
+                                Background="Transparent" Margin="10,10,10,10"
+                                Height="70" Width="150.5" BorderThickness="0.5"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--Year Button-->
+        <Style x:Key = "myButtonStyle" TargetType = "Button">
+            <Setter Property = "Height" Value = "70" />
+            <Setter Property = "Width" Value = "150.5" />
+            <Setter Property = "Foreground" Value = "#04aba3" />
+            <Setter Property = "FontSize" Value = "25" />
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Wintermesh"/>
+            <Setter Property = "Margin" Value = "10,10,10,10" />
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Grid.RowSpan="2">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="GhostWhite" Offset="0"/>
+                    <GradientStop Color="CornflowerBlue" Offset="3"/>
+                    <GradientStop Color="LightSkyBlue" Offset="2"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <Image Name="Logo" Grid.Row="0" HorizontalAlignment="Left" Margin="10,-10,0,0" Source="pack://application:,,,/Images/Logo3.png" Height="94" Width="150"
+                   Stretch="Uniform"/>
+        <Label Name="TeacherNameLabel" Content= "Name : " HorizontalAlignment="Center" Margin="0,40,0,0"
+               FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#0077be"/>
+
+        <!--Logout Button-->
+        <Button Name="LogoutButton" Width="80" Height="40" HorizontalAlignment="Right" Margin="0,10,30,0"
+                FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#FA1B1B">
+            Logout
+        </Button>
+
+        <Grid Name="PageGrid" Grid.Row="1" Background="Transparent">
+            <Border Grid.Row="1" Margin="1,0,1,360" BorderThickness="2" BorderBrush="#DBDAD2">
+                <TextBlock Text="Select Semester :" Grid.Row="1" FontWeight="Bold" FontSize="30" 
+                   FontFamily="Wintermesh" Foreground="#0077be" />
+            </Border>
+
+            <ScrollViewer Grid.Row="1" Margin="0,40,0,0">
+                <WrapPanel Name="UfGrid" Grid.Row="1" Margin="0,0,0,0" Width="Auto">
+
+                </WrapPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>

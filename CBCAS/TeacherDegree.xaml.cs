@@ -25,10 +25,7 @@ namespace CBCAS
     {   
         private string currentYear { get; set; }
         private TeacherWindow teacherMainWindow { get; set; }
-        public TeacherDegree()
-        {
-            InitializeComponent();
-        }
+
         public TeacherDegree(string currentYear,TeacherWindow teacherWindow)
         {
             InitializeComponent();
@@ -45,7 +42,7 @@ namespace CBCAS
             try
             {
                 mySqlConnection.Open();
-                string cmdString = "SELECT DISTINCT DEGREE FROM YEARDEGBRANCH WHERE YEAR = '" + 
+                string cmdString = "SELECT DISTINCT DEGREE FROM YEARDEGBRANCHSEM WHERE YEAR = '" + 
                     currentYear + "'";
                 MySqlCommand cmd = new MySqlCommand(cmdString, mySqlConnection);
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
@@ -66,6 +63,8 @@ namespace CBCAS
                    button.Click += new RoutedEventHandler(degreeButton_Click);
                     UfGrid.Children.Add(button);
                 }
+                cmd.Dispose();
+                mySqlConnection.Close();
             }
             catch
             {

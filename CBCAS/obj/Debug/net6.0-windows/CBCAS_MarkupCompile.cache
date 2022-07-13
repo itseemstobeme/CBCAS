@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Acer\Desktop\PROJECT\CBCAS\App.xaml
-5-1870407637
+9158031228
 1562103554
-7872255483
+11-1695236707
 197-1904140925
-LoginWindow.xaml;StudentWindow.xaml;TeacherBranch.xaml;TeacherDegree.xaml;TeacherWindow.xaml;
+AddSubjectWindow.xaml;LoginWindow.xaml;NewSubjectSubwindow.xaml;StudentWindow.xaml;SubjectAllocationPage.xaml;TeacherBranch.xaml;TeacherDegree.xaml;TeacherSemester.xaml;TeacherWindow.xaml;
 
 False
 

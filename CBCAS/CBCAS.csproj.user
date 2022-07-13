@@ -7,7 +7,16 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="AddSubjectWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="NewSubjectSubwindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="StudentWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SubjectAllocationPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="TeacherBranch.xaml.cs">
@@ -16,21 +25,36 @@
     <Compile Update="TeacherDegree.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="TeacherSemester.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="TeacherWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="AddSubjectWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="LoginWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="NewSubjectSubwindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="StudentWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SubjectAllocationPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TeacherBranch.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TeacherDegree.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TeacherSemester.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="TeacherWindow.xaml">

@@ -29,7 +29,6 @@ namespace CBCAS
         }
     }
 
-
     public partial class TeacherWindow : Window
     {   
         public TeacherWindow()
@@ -46,7 +45,6 @@ namespace CBCAS
             Teacher teacher = new Teacher();
             //ADD MYSQL CODE HERE OF GETTING TEACHER INFO
             TeacherNameLabel.Content += teacher.TeacherName;
-
             initializeButtons();
         }
 
@@ -64,7 +62,7 @@ namespace CBCAS
             try
             {
                 mySqlConnection.Open();
-                string cmdString = "SELECT DISTINCT YEAR FROM YEARDEGBRANCH";
+                string cmdString = "SELECT DISTINCT YEAR FROM YEARDEGBRANCHSEM";
                 MySqlCommand cmd = new MySqlCommand(cmdString, mySqlConnection);
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
                 
@@ -95,8 +93,6 @@ namespace CBCAS
                     wp.Children.Add(button); 
                     
                 }
-                
-
                 cmd.Dispose();
                 mySqlConnection.Close();
 

@@ -26,29 +26,26 @@ namespace CBCAS
         private string currentYear { get; set; }
         private string currentDegree { get; set; }
         private TeacherWindow mainTeacherWindow { get; set; }
-        public TeacherBranch()
-        {
-            InitializeComponent();
-        }
+
         public TeacherBranch(string currentYear,string currentDegree, TeacherWindow mainTeacherWindow)
         {
             InitializeComponent();
             this.currentYear = currentYear;
             this.currentDegree = currentDegree;
-            initializeButtons(currentYear, currentDegree);
             this.mainTeacherWindow = mainTeacherWindow;
+            initializeButtons(currentYear, currentDegree);
         }
 
         //Initializing the year buttons
-        private void initializeButtons(string year,string currentDegree)
+        private void initializeButtons(string currentYear,string currentDegree)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["offlineconnectionString"].ConnectionString;
             MySqlConnection mySqlConnection = new MySqlConnection(connectionString);
             try
             {
                 mySqlConnection.Open();
-                string cmdString = "SELECT BRANCH FROM YEARDEGBRANCH WHERE YEAR = '" +
-                    year + "' AND DEGREE = '" + currentDegree +"'" ;
+                string cmdString = "SELECT DISTINCT BRANCH FROM YEARDEGBRANCHSEM WHERE YEAR = '" +
+                    currentYear + "' AND DEGREE = '" + currentDegree +"'" ;
                 MySqlCommand cmd = new MySqlCommand(cmdString, mySqlConnection);
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
                 List<string> branchList = new List<string>();
@@ -65,14 +62,21 @@ namespace CBCAS
                         Tag = branchList[i],
                         Style = FindResource("myButtonStyle") as Style
                     };
-                    //button.Click += new RoutedEventHandler(degreeButton_Click);
+                    button.Click += new RoutedEventHandler(branchButton_Click);
                     UfGrid.Children.Add(button);
                 }
+                cmd.Dispose();
+                mySqlConnection.Close();
             }
             catch
             {
                 MessageBox.Show("Some Error Occured");
             }
+        }
+
+        private void branchButton_Click(object sender,RoutedEventArgs e)
+        {
+            mainTeacherWindow.Content = new TeacherSemester(currentYear,currentDegree,(string)(sender as Button).Tag,mainTeacherWindow);
         }
     }
 }

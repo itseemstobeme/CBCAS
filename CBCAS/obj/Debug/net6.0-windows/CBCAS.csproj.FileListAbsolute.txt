@@ -42,3 +42,11 @@ C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\TeacherDegree.g.cs
 C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\TeacherDegree.baml
 C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\TeacherBranch.g.cs
 C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\TeacherBranch.baml
+C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\TeacherSemester.g.cs
+C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\TeacherSemester.baml
+C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\SubjectAllocationPage.g.cs
+C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\SubjectAllocationPage.baml
+C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\AddSubjectWindow.g.cs
+C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\AddSubjectWindow.baml
+C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\NewSubjectSubwindow.g.cs
+C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\NewSubjectSubwindow.baml
