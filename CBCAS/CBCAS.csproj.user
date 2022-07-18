@@ -10,6 +10,9 @@
     <Compile Update="AddSubjectWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="AllocateSubjects.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="NewSubjectSubwindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -34,6 +37,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="AddSubjectWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AllocateSubjects.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="LoginWindow.xaml">

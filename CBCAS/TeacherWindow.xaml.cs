@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Windows.Navigation;
 
 namespace CBCAS
 {
@@ -108,6 +109,7 @@ namespace CBCAS
         {
             //MessageBox.Show((sender as Button).Name);
             //frame.Content = new TeacherBranch();
+            
             this.Content = new TeacherDegree((string)(sender as Button).Tag,this);
         }
     }

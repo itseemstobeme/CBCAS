@@ -64,7 +64,7 @@
 
         <Grid Name="PageGrid" Grid.Row="1" Background="Transparent">
             <Border Grid.Row="1" Margin="1,0,1,360" BorderThickness="2" BorderBrush="#DBDAD2">
-                <TextBlock Name ="AllocationStatus" Text="Subjects Not Floated" Grid.Row="1" FontWeight="Bold" FontSize="30" 
+                <TextBlock Name ="AllocationStatus" Text="Subjects not added yet" Grid.Row="1" FontWeight="Bold" FontSize="30" 
                    FontFamily="Wintermesh" Foreground="#0077be" />
             </Border>
 

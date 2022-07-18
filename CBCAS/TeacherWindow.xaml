@@ -1,4 +1,4 @@
-﻿<Window x:Class="CBCAS.TeacherWindow"
+﻿    <Window x:Class="CBCAS.TeacherWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,7 +8,7 @@
         Title="TeacherWindow" Height="500" Width="700" WindowStartupLocation="CenterScreen"
         WindowStyle="None" AllowsTransparency="True" Background="Transparent"
         ResizeMode="NoResize" MouseDown="Window_MouseDown">
-
+    
     <Window.Resources>
         <Style x:Key="StartButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Template">
@@ -35,6 +35,7 @@
         </Style>
         
     </Window.Resources>
+    
     
     <Grid>
         <Grid.RowDefinitions>
@@ -69,7 +70,7 @@
                 <TextBlock Text="Select Year :" Grid.Row="1" FontWeight="Bold" FontSize="30" 
                    FontFamily="Wintermesh" Foreground="#0077be" />
             </Border>
-
+            
             <ScrollViewer Grid.Row="1" Margin="0,40,0,0" Name="yeet">
                 <WrapPanel Name="wp" Grid.Row="1" Margin="0,0,0,0" Width="Auto">
                 </WrapPanel>

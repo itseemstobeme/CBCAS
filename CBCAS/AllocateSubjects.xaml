@@ -1,0 +1,53 @@
+﻿<Window x:Class="CBCAS.AllocateSubjects"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CBCAS"
+        mc:Ignorable="d"
+        Title="AllocateSubjects" Height="500" Width="500" WindowStartupLocation="CenterScreen"
+        WindowStyle="ThreeDBorderWindow" ResizeMode="NoResize" 
+        Icon="pack://application:,,,/Images/Logo3.png" Opacity="1" >
+
+
+    
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" BorderThickness="1" BorderBrush="Black">
+            <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+
+                <Label x:Name="HeaderLabel" Grid.Row="0" Content= "Select the elective courses to allocate " HorizontalAlignment="Left" Margin="0,0,0,0"
+               FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#3993cc"/>
+
+                <WrapPanel Orientation="Horizontal">
+                    <Label x:Name="HeaderLabel2" Grid.Row="0" Content= "(if applicable) :" HorizontalAlignment="Left" Margin="0,0,0,0"
+               FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#3993cc"/>
+                <Button x:Name="AllocateSubjectsButton" Content="Allocate Subjects" Margin="130,0,20,0" VerticalContentAlignment="Center" 
+                        HorizontalAlignment="Right" Height="35" Width="170"
+                        FontWeight="SemiBold" FontSize="17" Background="Transparent" />
+                </WrapPanel>
+
+            </StackPanel>
+        </Border>
+
+
+        <ListView Grid.Row="1" x:Name="listView" FontSize="17" FontFamily="Wintermesh" Width="NaN">
+            <ListView.View>
+                <GridView x:Name="gridView" AllowsColumnReorder="False">
+                    <GridViewColumn DisplayMemberBinding="{Binding checkBox}" Header="Select" Width="60"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding textBox}" Header="Seats Count" Width="NaN"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding SubjectCode}" Header="Subject Code" Width="NaN"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding SubjectName}" Header="Subject Name" Width="NaN"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding SubjectType}" Header="Subject Type" Width="NaN"/>
+                    
+               
+                </GridView>
+            </ListView.View>
+        </ListView> 
+    </Grid>
+</Window>

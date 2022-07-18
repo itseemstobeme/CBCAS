@@ -16,31 +16,36 @@
 
         <Border Grid.Row="0" BorderThickness="1" BorderBrush="Black">
         <StackPanel>
-        <Label Grid.Row="0" Content= "Click the button to add a new subject " HorizontalAlignment="Left" Margin="0,10,0,0"
+        <Label x:Name="HeaderLabel" Grid.Row="0" Content= "Click the button to add a new subject " HorizontalAlignment="Left" Margin="0,10,0,0"
                FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#3993cc"/>
                 
                 <WrapPanel Orientation="Horizontal" Grid.Row="0">
                     <Button x:Name="AddNewSubject" Content="+" Margin="5,0,0,0" VerticalContentAlignment="Stretch" 
                         HorizontalAlignment="Left" Height="35" Width="30"
                         FontWeight="ExtraBold" FontSize="20" Background="Transparent" Click="AddNewSubject_Click" />
-                    <Label Content= "Add New Subject " HorizontalAlignment="Left" Margin="0,5,0,0"
+                    <Label x:Name="AddNewSubjectLabel" Content= "Add New Subject " HorizontalAlignment="Left" Margin="0,5,0,0"
                FontWeight="Bold" FontSize="15" FontFamily="Wintermesh" Foreground="Black"/>
                     <Button x:Name="SaveSubjects" Content="Save" Margin="125,0,0,0" VerticalContentAlignment="Center" 
                         HorizontalAlignment="Right" Height="35" Width="70"
-                        FontWeight="SemiBold" FontSize="17" Background="Transparent" />
+                        FontWeight="SemiBold" FontSize="17" Background="Transparent" Click="SaveSubjects_Click" />
                 </WrapPanel>
         </StackPanel>
         </Border>
         
         
-        <ListView Grid.Row="1" x:Name="LV" FontSize="17" FontFamily="Wintermesh">
+        <ListView Grid.Row="1" x:Name="listView" FontSize="17" FontFamily="Wintermesh" Width="NaN"> 
             <ListView.View>
-                <GridView AllowsColumnReorder="True">
-                    <GridViewColumn Header="Subject Code" Width="Auto"/>
-                    <GridViewColumn Header="Subject Name" Width="Auto"/>
-
+                <GridView x:Name="gridView" AllowsColumnReorder="False">
+                    <GridViewColumn DisplayMemberBinding="{Binding SubjectCode}" Header="Subject Code" Width="NaN"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding SubjectName}" Header="Subject Name" Width="NaN"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding SubjectType}" Header="Subject Type" Width="NaN"/>
                 </GridView>
             </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu Name="DeleteMenu">
+                    <MenuItem Header="Delete Subject" Click="MenuItem_Click"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
         </ListView>
     </Grid>
 </Window>
