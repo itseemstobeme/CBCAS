@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Text.RegularExpressions;
 
 namespace CBCAS
 {
@@ -55,7 +56,7 @@ namespace CBCAS
 
                 int studentCount = 0;
                 bool elective = false;
-                while(mySqlDataReader.Read())
+                while (mySqlDataReader.Read())
                 {
                     AllocationSubject allocationSubject = new AllocationSubject();
                     allocationSubject.SubjectCode = mySqlDataReader.GetString(0);
@@ -83,5 +84,26 @@ namespace CBCAS
                 MessageBox.Show("SOME ERROR OCCURED");
             }
         }
+
+        //For ensuring that seat count input is always numeric
+        private void NumericTextBoxInput(object sender, TextCompositionEventArgs e)
+        {
+            var regex = new Regex(@"^[0-9]*(?:\.[0-9]*)?$");
+            if (regex.IsMatch(e.Text) && !(e.Text == "." && ((TextBox)sender).Text.Contains(e.Text)))
+                e.Handled = false;
+
+            else
+                e.Handled = true;
+        }
+
+        //Algo for allocating subjects
+        private void AllocateSubjectsButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (AllocationSubject item in listView.Items)
+            {
+                MessageBox.Show(item.checkBox.IsChecked.ToString()+ item.textBox.Text+item.Rank.ToString());
+            }
+        }
+
     }
 }

@@ -10,26 +10,25 @@
         Icon="pack://application:,,,/Images/Logo3.png" Opacity="1" >
 
 
-    
+
     <Grid>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="4*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0" BorderThickness="1" BorderBrush="Black">
-            <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+            <StackPanel Orientation="Vertical" Margin="0,10,0,0" >
 
                 <Label x:Name="HeaderLabel" Grid.Row="0" Content= "Select the elective courses to allocate " HorizontalAlignment="Left" Margin="0,0,0,0"
                FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#3993cc"/>
-
                 <WrapPanel Orientation="Horizontal">
                     <Label x:Name="HeaderLabel2" Grid.Row="0" Content= "(if applicable) :" HorizontalAlignment="Left" Margin="0,0,0,0"
                FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#3993cc"/>
-                <Button x:Name="AllocateSubjectsButton" Content="Allocate Subjects" Margin="130,0,20,0" VerticalContentAlignment="Center" 
+                    <Button x:Name="AllocateSubjectsButton" Content="Allocate Subjects" Margin="130,0,20,0" VerticalContentAlignment="Center" 
                         HorizontalAlignment="Right" Height="35" Width="170"
-                        FontWeight="SemiBold" FontSize="17" Background="Transparent" />
+                        FontWeight="SemiBold" FontSize="17" Background="Transparent" Click="AllocateSubjectsButton_Click"/>
                 </WrapPanel>
 
             </StackPanel>
@@ -37,17 +36,34 @@
 
 
         <ListView Grid.Row="1" x:Name="listView" FontSize="17" FontFamily="Wintermesh" Width="NaN">
+
             <ListView.View>
                 <GridView x:Name="gridView" AllowsColumnReorder="False">
-                    <GridViewColumn DisplayMemberBinding="{Binding checkBox}" Header="Select" Width="60"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding textBox}" Header="Seats Count" Width="NaN"/>
+                    <GridViewColumn Header="Select" Width="60">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsEnabled="{Binding checkBox.IsEnabled}" 
+                                          IsChecked="{Binding checkBox.IsChecked}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Seats Count" Width="NaN">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel HorizontalAlignment="Center" Margin="10,0,0,0">
+                                    <TextBox Text="{Binding textBox.Text}" PreviewTextInput="NumericTextBoxInput" 
+                                             MinWidth="30" IsEnabled="{Binding textBox.IsEnabled}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding SubjectCode}" Header="Subject Code" Width="NaN"/>
                     <GridViewColumn DisplayMemberBinding="{Binding SubjectName}" Header="Subject Name" Width="NaN"/>
                     <GridViewColumn DisplayMemberBinding="{Binding SubjectType}" Header="Subject Type" Width="NaN"/>
-                    
-               
+
+
                 </GridView>
             </ListView.View>
-        </ListView> 
+        </ListView>
     </Grid>
 </Window>

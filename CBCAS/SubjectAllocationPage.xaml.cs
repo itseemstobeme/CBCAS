@@ -94,7 +94,7 @@ namespace CBCAS
                         Button button = new Button()
                         {
                             Content = "Click here to view allocated subjects",
-                            Tag = "AddSubjects",
+                            Tag = "ViewSubjects",
                             Style = FindResource("myButtonStyle") as Style,
                             Width = 450
                         };
@@ -103,9 +103,16 @@ namespace CBCAS
                     }
                     else             //If subjects have been floated but not allocated
                     {
-                        MessageBox.Show("YEETYBOI");
-                        AllocateSubjects allocateSubjects = new AllocateSubjects(currentYear, currentDegree, currentBranch, currentSem, mainTeacherWindow);
-                        allocateSubjects.Show();
+                        AllocationStatus.Text = "Subjects floated but not allocated";
+                        Button button = new Button()
+                        {
+                            Content = "Click here to allocate subjects",
+                            Tag = "AllocateSubjects",
+                            Style = FindResource("myButtonStyle") as Style,
+                            Width = 450
+                        };
+                        button.Click += new RoutedEventHandler(AllocateSubjects_Click);
+                        UfGrid.Children.Add(button);
                     }
                 }
             }
@@ -188,6 +195,13 @@ namespace CBCAS
             {
                 MessageBox.Show("SOME ERROR OCCURED");
             }
+        }
+
+        //Allocate subjects
+        private void AllocateSubjects_Click(object sender,RoutedEventArgs e)
+        {
+            AllocateSubjects allocateSubjects = new AllocateSubjects(currentYear, currentDegree, currentBranch, currentSem, mainTeacherWindow);
+            allocateSubjects.ShowDialog();
         }
 
         //Float subjects
