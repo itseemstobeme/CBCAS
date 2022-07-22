@@ -113,6 +113,12 @@ namespace CBCAS
 
         private void SubmitPreferenceButton_Click(object sender, RoutedEventArgs e)
         {
+            //Confirmation Box
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure you want to submit?", "Confirm Preferences", MessageBoxButton.YesNoCancel);
+            if (messageBoxResult == MessageBoxResult.No || messageBoxResult == MessageBoxResult.Cancel)
+            {
+                return;
+            }
             string preference = "";
             List<PreferenceSubject> subjects = new List<PreferenceSubject>();
             foreach (PreferenceSubject preferenceSubject in listView.Items)
@@ -136,11 +142,11 @@ namespace CBCAS
                 }
             }
 
-            dumpPreferenceToDB();
+            dumpPreferenceToDB(ref preference);
 
         }
 
-        private void dumpPreferenceToDB()
+        private void dumpPreferenceToDB(ref string preference)
         {
             string tableName = Student.Year + Student.Degree + Student.Branch + semester;
             string connectionString = ConfigurationManager.ConnectionStrings["offlineconnectionString"].ConnectionString;
@@ -174,22 +180,38 @@ namespace CBCAS
                     }
                 }
 
-                foreach(KeyValuePair<string, Pair<uint, uint>> obj in dict)
+                //Updation of (Ranking and Rankcount) columns in the {YearDegBranchSem} table
+                foreach (KeyValuePair<string, Pair<uint, uint>> obj in dict)
                 {
-                    
+
                     mySqlConnection.Open();
-                    cmdString = "UPDATE " + tableName + " SET RANKING = "+
-                        obj.Value.First.ToString()+" , RANKCOUNT = " +
-                        obj.Value.Second.ToString() + " WHERE SUBJECTCODE = '"+
-                        obj.Key+"'";
-                   
+                    cmdString = "UPDATE " + tableName + " SET RANKING = " +
+                        obj.Value.First.ToString() + " , RANKCOUNT = " +
+                        obj.Value.Second.ToString() + " WHERE SUBJECTCODE = '" +
+                        obj.Key + "'";
+
                     cmd = new MySqlCommand(cmdString, mySqlConnection);
                     cmd.ExecuteNonQuery();
 
                     cmd.Dispose();
                     mySqlConnection.Close();
                 }
-                MessageBox.Show("DONE!");
+
+                //Updation of (Preference) column in the {Student} table
+                mySqlConnection.Open();
+                cmdString = "UPDATE STUDENT SET PREFERENCE ='" + preference +
+                    "' WHERE STUDENTNAME = '" + Student.StudentName + "'";
+                cmd = new MySqlCommand(cmdString, mySqlConnection);
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                mySqlConnection.Close();
+                MessageBox.Show("Preferences submitted, now redirecting to main window");
+
+                //Close Window and return
+                StudentWindow studentWindow = new StudentWindow(Student.StudentID);
+                studentWindow.Show();
+                this.Close();
+                mainStudentWindow.Close();
             }
             catch
             {
