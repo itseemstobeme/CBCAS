@@ -30,6 +30,8 @@ namespace CBCAS
         public TeacherBranch(string currentYear,string currentDegree, TeacherWindow mainTeacherWindow)
         {
             InitializeComponent();
+            TeacherNameLabel.Content += Teacher.TeacherName;
+            TeacherIDLabel.Content += Teacher.TeacherID;
             this.currentYear = currentYear;
             this.currentDegree = currentDegree;
             this.mainTeacherWindow = mainTeacherWindow;
@@ -77,6 +79,13 @@ namespace CBCAS
         private void branchButton_Click(object sender,RoutedEventArgs e)
         {
             mainTeacherWindow.Content = new TeacherSemester(currentYear,currentDegree,(string)(sender as Button).Tag,mainTeacherWindow);
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            mainTeacherWindow.Close();
         }
     }
 }

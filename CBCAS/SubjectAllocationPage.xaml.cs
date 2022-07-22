@@ -43,6 +43,8 @@ namespace CBCAS
         public SubjectAllocationPage(string currentYear, string currentDegree, string currentBranch, string currentSem, TeacherWindow mainTeacherWindow)
         {
             InitializeComponent();
+            TeacherNameLabel.Content += Teacher.TeacherName;
+            TeacherIDLabel.Content += Teacher.TeacherID;
             this.currentYear = currentYear;
             this.currentDegree = currentDegree;
             this.currentBranch = currentBranch;
@@ -243,6 +245,13 @@ namespace CBCAS
             {
                 MessageBox.Show("SOME ERROR OCCURED");
             }
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            mainTeacherWindow.Close();
         }
     }
 }

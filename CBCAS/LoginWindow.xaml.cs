@@ -21,11 +21,35 @@ namespace CBCAS
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    public static class Teacher
+    {
+        public static string TeacherID = "";
+        public static string TeacherName = "";
+        public static void setTeacher(string TID)
+        {
+            TeacherID = TID;
+            string connectionString = ConfigurationManager.ConnectionStrings["offlineconnectionString"].ConnectionString;
+            MySqlConnection mySqlConnection = new MySqlConnection(connectionString);
+            mySqlConnection.Open();
+            string cmdString = "SELECT * FROM TEACHER WHERE TEACHERID = '" + TeacherID + "'";
+            MySqlCommand cmd = new MySqlCommand(cmdString, mySqlConnection);
+            MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
+
+            while(mySqlDataReader.Read())
+            {
+                TeacherName = mySqlDataReader.GetString(1);
+            }
+        }
+    }
+
     public partial class LoginWindow : Window
     {
         public LoginWindow()
         {
             InitializeComponent();
+            
+            StudentID.Text = "2019UEE5009";
+            StudentPassword.Password = "iammanuman";
         }
 
         private void LoginWindow_MouseDown(object sender, MouseEventArgs e)
@@ -49,17 +73,22 @@ namespace CBCAS
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
                 if (mySqlDataReader.HasRows)
                 {
+                    Teacher.setTeacher(TeacherID.Text);
                     TeacherWindow teacherWindow = new TeacherWindow();
                     teacherWindow.Show();
                     cmd.Dispose();
                     mySqlConnection.Close();
 
                     this.Close();
-                }    
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect login credentials");
+                }
             }
             catch
             {
-                MessageBox.Show("Some Error Occured");
+                MessageBox.Show("Unable to connect to the server\nPlease check your internet connection");
             }
         }
 
@@ -76,18 +105,21 @@ namespace CBCAS
                 MySqlCommand cmd = new MySqlCommand(cmdString, mySqlConnection);
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
                 if (mySqlDataReader.HasRows)
-                {
-                    StudentWindow studentWindow = new StudentWindow();
+                {   
+                    StudentWindow studentWindow = new StudentWindow(StudentID.Text);
                     studentWindow.Show();
                     cmd.Dispose();
                     mySqlConnection.Close();
-
                     this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect login credentials");
                 }
             }
             catch
             {
-                MessageBox.Show("Some Error Occured");
+                MessageBox.Show("Unable to connect to the server\nPlease check your internet connection");
             }
         }
 
@@ -110,6 +142,28 @@ namespace CBCAS
             if (e.Key != Key.Return && e.Key != Key.Enter)
                 return;
             StudentLoginButton_Click(sender, e);
+        }
+
+        private void tabItem_Selected(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show(tabItem.SelectedIndex.ToString());
+            TabItem item = tabItem.SelectedItem as TabItem;
+            if(item.Name == "TeacherLogin")
+            {
+                Grad2.Color = Brushes.CornflowerBlue.Color;
+                Grad3.Color = Brushes.LightSkyBlue.Color;
+                Grad2.Offset = 3;
+                Grad3.Offset = 2;
+
+            }
+            else
+            {
+                Grad2.Color = Brushes.CornflowerBlue.Color;
+                BrushConverter brushConverter = new BrushConverter();
+                Grad3.Color = (Color)ColorConverter.ConvertFromString("#97F8EC");
+                Grad2.Offset = 3;
+                Grad3.Offset = 2;
+            }
         }
     }
 }

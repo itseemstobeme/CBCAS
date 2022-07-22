@@ -15,9 +15,9 @@
         <Border CornerRadius="20">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Color="GhostWhite" Offset="0"/>
-                    <GradientStop Color="CornflowerBlue" Offset="3"/>
-                    <GradientStop Color="LightSkyBlue" Offset="2"/>
+                    <GradientStop x:Name="Grad1" Color="GhostWhite" Offset="0"/>
+                    <GradientStop x:Name="Grad2" Color="CornflowerBlue" Offset="3"/>
+                    <GradientStop x:Name="Grad3" Color="LightSkyBlue" Offset="2"/>
                 </LinearGradientBrush>
             </Border.Background>
         </Border>
@@ -28,10 +28,10 @@
             <Image Name="Logo" Source="pack://application:,,,/Images/Logo3.png" Margin ="60,50,80,40" Height="94" Width="200"
                    Stretch="Uniform"/>
 
-            <TabControl  Height="300" Background="Transparent" BorderThickness="0">
+            <TabControl SelectionChanged="tabItem_Selected" x:Name="tabItem" Height="300" Background="Transparent" BorderThickness="0">
                 
                 <!--TEACHER LOGIN TAB-->
-                <TabItem Name="TeacherLogin" Header="Teacher Login" Foreground="DodgerBlue"
+                <TabItem  Name="TeacherLogin" Header="Teacher Login" Foreground="DodgerBlue"
                       FontFamily="pack://application:,,,/Fonts/#Star Jedi" FontSize="15" TabIndex="0">
                     <StackPanel Margin="0,20,0,0">
                         <Label FontWeight="Bold" FontSize="20" FontFamily="Wintermesh"

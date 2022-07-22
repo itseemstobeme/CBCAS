@@ -57,10 +57,12 @@
                    Stretch="Uniform"/>
         <Label Name="TeacherNameLabel" Content= "Name : " HorizontalAlignment="Center" Margin="0,40,0,0"
                FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#0077be"/>
-        
+        <Label Name="TeacherIDLabel" Content= "ID : " HorizontalAlignment="Center" Margin="0,65,0,0"
+               FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#0077be"/>
         <!--Logout Button-->
         <Button Name="LogoutButton" Width="80" Height="40" HorizontalAlignment="Right" Margin="0,10,30,0"
-                FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#FA1B1B"> 
+                FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#FA1B1B"
+                Click="LogoutButton_Click"> 
             Logout
         </Button>
 

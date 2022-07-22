@@ -5,8 +5,83 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CBCAS"
         mc:Ignorable="d"
-        Title="StudentWindow" Height="450" Width="800">
+        Title="StudentWindow" Height="500" Width="700" WindowStartupLocation="CenterScreen"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        ResizeMode="NoResize" MouseDown="Window_MouseDown">
+
+    <Window.Resources>
+        <Style x:Key="StartButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Button FontFamily="pack://application:,,,/Fonts/#Star Jedi" FontSize="25" 
+                                Background="Transparent" Margin="10,10,10,10"
+                                Height="70" Width="150.5" BorderThickness="0.5"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--Year Button-->
+        <Style x:Key = "myButtonStyle" TargetType = "Button">
+            <Setter Property = "Height" Value = "70" />
+            <Setter Property = "Width" Value = "150.5" />
+            <Setter Property = "Foreground" Value = "#04aba3" />
+            <Setter Property = "FontSize" Value = "25" />
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Wintermesh"/>
+            <Setter Property = "Margin" Value = "10,10,10,10" />
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+
+    </Window.Resources>
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Grid.RowSpan="2">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="GhostWhite" Offset="0"/>
+                    <GradientStop Color="CornflowerBlue" Offset="3"/>
+                    <GradientStop Color="#97F8EC" Offset="2"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <Image Name="Logo" Grid.Row="0" HorizontalAlignment="Left" Margin="10,-10,0,0" Source="pack://application:,,,/Images/Logo3.png" Height="94" Width="150"
+                   Stretch="Uniform"/>
+        <Label Name="StudentNameLabel" Content= "Name : " HorizontalAlignment="Center" Margin="0,40,0,0"
+               FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#0077be"/>
+        <Label Name="StudentIDLabel" Content= "ID : " HorizontalAlignment="Center" Margin="0,65,0,0"
+               FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#0077be"/>
+        <!--Logout Button-->
+        <Button Name="LogoutButton" Width="80" Height="40" HorizontalAlignment="Right" Margin="0,10,30,0"
+                FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#FA1B1B"
+                Click="LogoutButton_Click">
+            Logout
+        </Button>
+
+        <Frame x:Name="MainFrame" Grid.Row="1"/>
+
+        <Grid Name="PageGrid" Grid.Row="1" Background="Transparent">
+            <Border Grid.Row="1" Margin="1,0,1,360" BorderThickness="2" BorderBrush="#DBDAD2">
+                <TextBlock Name="SemesterStatus"  Text="No semesters have been created for you" Grid.Row="1" FontWeight="Bold" FontSize="30" 
+                   FontFamily="Wintermesh" Foreground="#0077be"/>
+            </Border>
+
+            <ScrollViewer Grid.Row="1" Margin="0,40,0,0" Name="yeet">
+                <WrapPanel Name="wp" Grid.Row="1" Margin="0,0,0,0" Width="Auto">
+                </WrapPanel>
+            </ScrollViewer>
+
+        </Grid>
+
     </Grid>
+
+
+
 </Window>

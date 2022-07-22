@@ -20,10 +20,10 @@ namespace CBCAS
     /// <summary>
     /// Interaction logic for TeacherSemester.xaml
     /// </summary>
-    public class RomanNumeral
+    public static class RomanNumeral
     {   
         //Optimize function by DP later on
-        public string ToRoman(int number)
+        public static string ToRoman(int number)
         {
             if ((number < 0) || (number > 3999)) throw new ArgumentOutOfRangeException("insert value betwheen 1 and 3999");
             if (number < 1) return string.Empty;
@@ -52,6 +52,8 @@ namespace CBCAS
         public TeacherSemester(string currentYear,string currentDegree,string currentBranch,TeacherWindow mainTeacherWindow)
         {
             InitializeComponent();
+            TeacherNameLabel.Content += Teacher.TeacherName;
+            TeacherIDLabel.Content += Teacher.TeacherID;
             this.currentYear = currentYear;
             this.currentDegree = currentDegree;
             this.currentBranch = currentBranch;
@@ -78,12 +80,12 @@ namespace CBCAS
                     semList.Add(mySqlDataReader.GetString(0));
                 }
 
-                RomanNumeral romanNumeral = new RomanNumeral();
+                
                 for (int i = 0; i < semList.Count; ++i)
                 {
                     Button button = new Button()
                     {
-                        Content = "SEM " + romanNumeral.ToRoman(int.Parse(semList[i])),
+                        Content = "SEM " + RomanNumeral.ToRoman(int.Parse(semList[i])),
                         Tag = semList[i],
                         Style = FindResource("myButtonStyle") as Style
                     };
@@ -102,6 +104,13 @@ namespace CBCAS
         private void semesterButton_Click(object sender,RoutedEventArgs e)
         {
             mainTeacherWindow.Content = new SubjectAllocationPage(currentYear, currentDegree, currentBranch, (string)(sender as Button).Tag,mainTeacherWindow);
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            mainTeacherWindow.Close();
         }
     }
 }

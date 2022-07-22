@@ -52,3 +52,7 @@ C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\NewSubjectSubwindow
 C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\NewSubjectSubwindow.baml
 C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\AllocateSubjects.g.cs
 C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\AllocateSubjects.baml
+C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\StudentSubjectViewFill.g.cs
+C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\StudentSubjectViewFill.baml
+C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\StudentPreference.g.cs
+C:\Users\Acer\Desktop\PROJECT\CBCAS\obj\Debug\net6.0-windows\StudentPreference.baml

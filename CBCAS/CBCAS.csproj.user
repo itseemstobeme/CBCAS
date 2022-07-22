@@ -16,6 +16,12 @@
     <Compile Update="NewSubjectSubwindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="StudentPreference.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="StudentSubjectViewFill.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="StudentWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -46,6 +52,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="NewSubjectSubwindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="StudentPreference.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="StudentSubjectViewFill.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="StudentWindow.xaml">

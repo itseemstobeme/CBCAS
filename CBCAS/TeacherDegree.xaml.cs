@@ -24,13 +24,15 @@ namespace CBCAS
     public partial class TeacherDegree : Page
     {   
         private string currentYear { get; set; }
-        private TeacherWindow teacherMainWindow { get; set; }
+        private TeacherWindow mainTeacherWindow { get; set; }
 
-        public TeacherDegree(string currentYear,TeacherWindow teacherWindow)
+        public TeacherDegree(string currentYear,TeacherWindow mainTeacherWindow)
         {
             InitializeComponent();
+            TeacherNameLabel.Content += Teacher.TeacherName;
+            TeacherIDLabel.Content += Teacher.TeacherID;
             this.currentYear = currentYear;
-            this.teacherMainWindow = teacherWindow;
+            this.mainTeacherWindow = mainTeacherWindow;
             initializeButtons(currentYear);
         }
 
@@ -74,7 +76,14 @@ namespace CBCAS
 
         private void degreeButton_Click(object sender, RoutedEventArgs e)
         {
-            teacherMainWindow.Content = new TeacherBranch(currentYear,(string)(sender as Button).Tag,teacherMainWindow);
+            mainTeacherWindow.Content = new TeacherBranch(currentYear,(string)(sender as Button).Tag, mainTeacherWindow);
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            mainTeacherWindow.Close();
         }
     }
 }

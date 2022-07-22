@@ -20,32 +20,14 @@ namespace CBCAS
     /// <summary>
     /// Interaction logic for TeacherWindow.xaml
     /// </summary> 
-    public class Teacher
-    {
-        public string TeacherID { get; set; }
-        public string TeacherName { get; set; }
-        public Teacher()
-        {
-
-        }
-    }
 
     public partial class TeacherWindow : Window
     {   
         public TeacherWindow()
         {
             InitializeComponent();
-            TeacherNameLabel.Content +="Ms YEETY BOI";
-            initializeButtons();
-        }
-
-        public TeacherWindow(string TeacherID)
-        {
-            InitializeComponent();
-
-            Teacher teacher = new Teacher();
-            //ADD MYSQL CODE HERE OF GETTING TEACHER INFO
-            TeacherNameLabel.Content += teacher.TeacherName;
+            TeacherNameLabel.Content += Teacher.TeacherName;
+            TeacherIDLabel.Content += Teacher.TeacherID;
             initializeButtons();
         }
 
@@ -111,6 +93,13 @@ namespace CBCAS
             //frame.Content = new TeacherBranch();
             
             this.Content = new TeacherDegree((string)(sender as Button).Tag,this);
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            this.Close();
         }
     }
 }

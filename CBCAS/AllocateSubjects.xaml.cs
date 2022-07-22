@@ -50,7 +50,7 @@ namespace CBCAS
             try
             {
                 mySqlConnection.Open();
-                string cmdString = "SELECT * FROM " + tableName;
+                string cmdString = "SELECT * FROM " + tableName + " ORDER BY SubjectType,Ranking";
                 MySqlCommand cmd = new MySqlCommand(cmdString, mySqlConnection);
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
 
