@@ -55,10 +55,9 @@ namespace CBCAS
             HeaderLabel.Content = "Allocated subjects are :";
             DeleteMenu.Visibility = Visibility.Hidden;
             this.Title = "View Allocated Subjects";
-            for (int i = 0; i < commitedSubjects.Count; ++i)
-            {
-                listView.Items.Add(commitedSubjects[i]);
-            }
+
+            commitedSubjects = commitedSubjects.OrderBy(x => x.SubjectType).ToList();
+            listView.ItemsSource = commitedSubjects;
         }
         private void AddNewSubject_Click(object sender, RoutedEventArgs e)
         {

@@ -47,11 +47,6 @@ namespace CBCAS
         public LoginWindow()
         {
             InitializeComponent();
-
-            //StudentID.Text = "2019UEE5009";
-            //StudentPassword.Password = "iammanuman";
-            TeacherID.Text = "2018EXT005";
-            TeacherPassword.Password = "irock";
         }
 
         private void LoginWindow_MouseDown(object sender, MouseEventArgs e)
