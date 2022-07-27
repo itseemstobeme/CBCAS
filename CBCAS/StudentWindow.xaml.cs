@@ -22,7 +22,7 @@ namespace CBCAS
     /// Interaction logic for StudentWindow.xaml
     /// </summary>
 
-    public static class Student
+    public class Student
     {
         public static string StudentID = "";
         public static string StudentName = "";
@@ -31,6 +31,7 @@ namespace CBCAS
         public static string Degree = "";
         public static string Branch = "";
         public static string Preference = null;
+        public static uint PreferenceSem = 0;
         public static void setStudent(string SID)
         {
             StudentID = SID;
@@ -40,7 +41,6 @@ namespace CBCAS
             string cmdString = "SELECT * FROM STUDENT WHERE STUDENTID = '" + StudentID + "'";
             MySqlCommand cmd = new MySqlCommand(cmdString, mySqlConnection);
             MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
-
             while (mySqlDataReader.Read())
             {
 
@@ -54,7 +54,21 @@ namespace CBCAS
 
                 if (!mySqlDataReader.IsDBNull(6))
                     Preference = mySqlDataReader.GetString(6);
+                if (!mySqlDataReader.IsDBNull(7))
+                    PreferenceSem = mySqlDataReader.GetUInt32(7);
+
             }
+        }
+        public static void resetStudent()
+        {
+            StudentID = "";
+            StudentName = "";
+            StudentCGPA = 0;
+            Year = "";
+            Degree = "";
+            Branch = "";
+            Preference = null;
+            PreferenceSem = 0;
         }
     }
     public partial class StudentWindow : Window
@@ -77,7 +91,6 @@ namespace CBCAS
             {
                 mySqlConnection.Open();
                 string cmdString = "SELECT * FROM (SELECT TABLE_NAME AS tables FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'testing') AS TABLES WHERE TABLES LIKE '" + tableName + "%'";   //finding tables eg. 2019btechbt* where * = sem(1,2,3..)
-                
                 MySqlCommand cmd = new MySqlCommand(cmdString, mySqlConnection);
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
 
@@ -89,12 +102,13 @@ namespace CBCAS
                     {
                         ++semCount;
                     }
+
                     for (int i = 0; i < semCount; ++i)
                     {
                         Button button = new Button()
                         {
-                            Content = RomanNumeral.ToRoman(i+1),
-                            Tag = (i+1).ToString(),
+                            Content = RomanNumeral.ToRoman(i + 1),
+                            Tag = (i + 1).ToString(),
                             Style = FindResource("myButtonStyle") as Style
                         };
                         button.Click += new RoutedEventHandler(semButton_click);
@@ -110,9 +124,9 @@ namespace CBCAS
         }
 
         //Semester button click
-        private void semButton_click(object sender,RoutedEventArgs e)
+        private void semButton_click(object sender, RoutedEventArgs e)
         {
-            StudentSubjectViewFill studentSubjectViewFill = new StudentSubjectViewFill((sender as Button).Tag.ToString(),this);
+            StudentSubjectViewFill studentSubjectViewFill = new StudentSubjectViewFill((sender as Button).Tag.ToString(), this);
             this.Content = studentSubjectViewFill;
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -123,6 +137,7 @@ namespace CBCAS
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
+            Student.resetStudent();
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
             this.Close();

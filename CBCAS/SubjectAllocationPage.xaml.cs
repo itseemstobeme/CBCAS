@@ -29,6 +29,11 @@ namespace CBCAS
         public uint Rank { get; set; }
     }
 
+    public class ElectiveCount
+    {
+        public static uint electiveCount = 0; //for keeping count of electives
+
+    }
     public partial class SubjectAllocationPage : Page
     {
         private string currentYear { get; set; }
@@ -39,7 +44,6 @@ namespace CBCAS
         private Dictionary<string, Subject> map { get; set; }
         private TeacherWindow mainTeacherWindow { get; set; }
         private Button floatButton { get; set; }
-
         public SubjectAllocationPage(string currentYear, string currentDegree, string currentBranch, string currentSem, TeacherWindow mainTeacherWindow)
         {
             InitializeComponent();
@@ -200,7 +204,7 @@ namespace CBCAS
         }
 
         //Allocate subjects
-        private void AllocateSubjects_Click(object sender,RoutedEventArgs e)
+        private void AllocateSubjects_Click(object sender, RoutedEventArgs e)
         {
             AllocateSubjects allocateSubjects = new AllocateSubjects(currentYear, currentDegree, currentBranch, currentSem, mainTeacherWindow);
             allocateSubjects.ShowDialog();
@@ -209,6 +213,15 @@ namespace CBCAS
         //Float subjects
         private void FloatAddedSubjectsButton_Click(object sender, RoutedEventArgs e)
         {
+            if (ElectiveCount.electiveCount > 1)
+            {
+                bool checkGPA = GPAExistence();
+                if(checkGPA == false)
+                {
+                    MessageBox.Show("Since no cgpa exists for students, please float 0 or 1 elective courses");
+                    return;
+                }
+            }
             string tableName = currentYear + currentDegree + currentBranch + currentSem;
             string connectionString = ConfigurationManager.ConnectionStrings["offlineconnectionString"].ConnectionString;
             MySqlConnection mySqlConnection = new MySqlConnection(connectionString);
@@ -237,7 +250,7 @@ namespace CBCAS
                 }
                 MessageBox.Show("Subjects floated\nReturning to main window");
                 TeacherWindow newTeacherWindow = new TeacherWindow();
-                newTeacherWindow.ShowDialog();
+                newTeacherWindow.Show();
                 mainTeacherWindow.Close();
 
             }
@@ -247,6 +260,35 @@ namespace CBCAS
             }
         }
 
+        //Checks existence of 
+        private bool GPAExistence()
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["offlineconnectionString"].ConnectionString;
+            MySqlConnection mySqlConnection = new MySqlConnection(connectionString);
+            try
+            {
+                mySqlConnection.Open();
+                string cmdString = "SELECT *  FROM STUDENT WHERE DEGREE ='" + currentDegree +
+                    "' AND BRANCH = '" + currentBranch + "' AND YEAR = '" +currentYear+"'";
+                MySqlCommand cmd = new MySqlCommand(cmdString, mySqlConnection);
+                MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
+
+                while (mySqlDataReader.Read())
+                {
+                    if (mySqlDataReader.IsDBNull(2))
+                        return false;
+                }
+
+                cmd.Dispose();
+                mySqlConnection.Close();
+                return true;
+            }
+            catch
+            {
+                MessageBox.Show("SOME ERROR OCCURED");
+                return false;
+            }
+        }
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
             LoginWindow loginWindow = new LoginWindow();

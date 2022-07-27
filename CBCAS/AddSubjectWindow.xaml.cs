@@ -85,6 +85,8 @@ namespace CBCAS
                 listView.Items.Remove(item);
                 map.Remove(item.SubjectCode);
                 subjects.Remove(item);
+                if (item.SubjectType == "Elective Course")
+                    --ElectiveCount.electiveCount;
             }
             
         }

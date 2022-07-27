@@ -39,14 +39,14 @@ namespace CBCAS
         }
 
         private void fillPage()
-        {   
-            if(Student.Preference != null)
+        {
+            if (Student.PreferenceSem.ToString() == semester)
             {
                 AllocationStatus.Text = "Preference filled, please wait for allocation by teacher";
-                AllocationStatus.FontSize -= 4 ;
+                AllocationStatus.FontSize -= 4;
                 return;
             }
-            
+
             string tableName = Student.Year + Student.Degree + Student.Branch + semester;
             string connectionString = ConfigurationManager.ConnectionStrings["offlineconnectionString"].ConnectionString;
             MySqlConnection mySqlConnection = new MySqlConnection(connectionString);
@@ -56,7 +56,7 @@ namespace CBCAS
                 string cmdString = "SELECT * FROM " + tableName;
                 MySqlCommand cmd = new MySqlCommand(cmdString, mySqlConnection);
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
-
+                bool electiveSwitch = false;
                 if (mySqlDataReader.HasRows)
                 {
                     string YN = "";
@@ -67,6 +67,8 @@ namespace CBCAS
                         subject.SubjectCode = mySqlDataReader.GetString(0);
                         subject.SubjectName = mySqlDataReader.GetString(1);
                         subject.SubjectType = mySqlDataReader.GetString(2);
+                        if (subject.SubjectType == "Elective Course")
+                            electiveSwitch = true;
                         YN = mySqlDataReader.GetString(3);
                         subject.Rank = uint.Parse(mySqlDataReader.GetString(4));
                         rankCount = int.Parse(mySqlDataReader.GetString(5));
@@ -89,16 +91,25 @@ namespace CBCAS
                     }
                     else
                     {
-                        AllocationStatus.Text = "Please fill your preference for SEM " + RomanNumeral.ToRoman(int.Parse(semester));
-                        Button button = new Button()
+                        if (electiveSwitch == false)
                         {
-                            Content = "Click here to fill your preference",
-                            Tag = "Subjects",
-                            Style = FindResource("myButtonStyle") as Style,
-                            Width = 450
-                        };
-                        button.Click += new RoutedEventHandler(FillPreference_Click);
-                        UfGrid.Children.Add(button);
+                            AllocationStatus.Text = "Only core subjects have been floated, please wait for allocation";
+                            AllocationStatus.FontSize -= 7;
+                            return;
+                        }
+                        else
+                        {
+                            AllocationStatus.Text = "Please fill your preference for SEM " + RomanNumeral.ToRoman(int.Parse(semester));
+                            Button button = new Button()
+                            {
+                                Content = "Click here to fill your preference",
+                                Tag = "Subjects",
+                                Style = FindResource("myButtonStyle") as Style,
+                                Width = 450
+                            };
+                            button.Click += new RoutedEventHandler(FillPreference_Click);
+                            UfGrid.Children.Add(button);
+                        }
                     }
                 }
             }
@@ -120,12 +131,12 @@ namespace CBCAS
             try
             {
                 mySqlConnection.Open();
-                string cmdString = "SELECT SubjectCode FROM Final" + tableName + 
-                    " WHERE StudentID = '" + Student.StudentID +"'";
+                string cmdString = "SELECT SubjectCode FROM Final" + tableName +
+                    " WHERE StudentID = '" + Student.StudentID + "'";
                 MySqlCommand cmd = new MySqlCommand(cmdString, mySqlConnection);
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
 
-                while(mySqlDataReader.Read())
+                while (mySqlDataReader.Read())
                 {
                     allocatedSubjects.Add(subjectMap[mySqlDataReader.GetString(0)]);
                 }
@@ -147,6 +158,7 @@ namespace CBCAS
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
+            Student.resetStudent();
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
             mainStudentWindow.Close();

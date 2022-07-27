@@ -26,13 +26,11 @@ namespace CBCAS
         public Pair()
         {
         }
-
         public Pair(T first, U second)
         {
             this.First = first;
             this.Second = second;
         }
-
         public T First { get; set; }
         public U Second { get; set; }
     }
@@ -68,7 +66,7 @@ namespace CBCAS
             try
             {
                 mySqlConnection.Open();
-                string cmdString = "SELECT * FROM " + tableName + " ORDER BY SubjectType,Ranking";
+                string cmdString = "SELECT * FROM " + tableName + " ORDER BY SubjectType";
                 MySqlCommand cmd = new MySqlCommand(cmdString, mySqlConnection);
                 MySqlDataReader mySqlDataReader = cmd.ExecuteReader();
 
@@ -119,6 +117,8 @@ namespace CBCAS
             {
                 return;
             }
+
+            PriorityQueue<string,int> priorityQueue = new PriorityQueue<string,int>();
             string preference = "";
             List<PreferenceSubject> subjects = new List<PreferenceSubject>();
             foreach (PreferenceSubject preferenceSubject in listView.Items)
@@ -132,16 +132,24 @@ namespace CBCAS
                     }
                     else
                     {
+                        priorityQueue.Enqueue(preferenceSubject.SubjectCode,
+                            int.Parse(preferenceSubject.comboBox.SelectedValue.ToString()));
+                        /*
                         if (preference == "")
                             preference += preferenceSubject.SubjectCode + "+" + preferenceSubject.comboBox.SelectedValue.ToString();
                         else
                             preference += "," + preferenceSubject.SubjectCode + "+" + preferenceSubject.comboBox.SelectedValue.ToString();
-
+                        */
                         preferenceSubject.Rank = uint.Parse(preferenceSubject.comboBox.SelectedValue.ToString());
                     }
                 }
             }
 
+            while(priorityQueue.Count>0)
+            {
+                preference += priorityQueue.Dequeue()+",";
+            }
+            preference = preference.Remove(preference.Length - 1, 1);
             dumpPreferenceToDB(ref preference);
 
         }
@@ -200,12 +208,13 @@ namespace CBCAS
                 //Updation of (Preference) column in the {Student} table
                 mySqlConnection.Open();
                 cmdString = "UPDATE STUDENT SET PREFERENCE ='" + preference +
-                    "' WHERE STUDENTNAME = '" + Student.StudentName + "'";
+                    "', PREFERENCESEM ='" + semester + "' WHERE STUDENTNAME = '" + Student.StudentName + "'";
                 cmd = new MySqlCommand(cmdString, mySqlConnection);
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
                 mySqlConnection.Close();
                 MessageBox.Show("Preferences submitted, now redirecting to main window");
+
 
                 //Close Window and return
                 StudentWindow studentWindow = new StudentWindow(Student.StudentID);

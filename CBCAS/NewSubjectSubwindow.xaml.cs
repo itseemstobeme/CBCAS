@@ -46,6 +46,8 @@ namespace CBCAS
                 currentSubject.SubjectCode = SubjectCode.Text;
                 currentSubject.SubjectName = SubjectName.Text;
                 currentSubject.SubjectType = SubjectType.Text;
+                if (currentSubject.SubjectType == "Elective Course")
+                    ++ElectiveCount.electiveCount;
 
                 if (map.ContainsKey(SubjectCode.Text))
                 {
