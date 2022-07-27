@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="AllocateSubjects" Height="500" Width="500" WindowStartupLocation="CenterScreen"
         WindowStyle="ThreeDBorderWindow" ResizeMode="NoResize" 
-        Icon="pack://application:,,,/Images/Logo3.png" Opacity="1" >
+        Icon="pack://application:,,,/Images/Taskbar.png" Opacity="1" >
 
 
 

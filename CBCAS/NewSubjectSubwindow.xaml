@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:CBCAS"
         mc:Ignorable="d"
         Title="New Subject" Height="370" Width="370" WindowStartupLocation="CenterScreen"
-        WindowStyle="ToolWindow" ResizeMode="NoResize" Closed="Window_Closed">
+        WindowStyle="ToolWindow" ResizeMode="NoResize" Closed="Window_Closed"
+        Icon="pack://application:,,,/Images/Taskbar.png">
 
     <Grid>
         

@@ -112,5 +112,15 @@ namespace CBCAS
             loginWindow.Show();
             mainTeacherWindow.Close();
         }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            TeacherWindow teacherWindow = new TeacherWindow();
+            teacherWindow.WindowStartupLocation = WindowStartupLocation.Manual;
+            teacherWindow.Top = mainTeacherWindow.Top;
+            teacherWindow.Left = mainTeacherWindow.Left;
+            teacherWindow.Show();
+            mainTeacherWindow.Close();
+        }
     }
 }

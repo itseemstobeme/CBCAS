@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="TeacherWindow" Height="500" Width="700" WindowStartupLocation="CenterScreen"
         WindowStyle="None" AllowsTransparency="True" Background="Transparent"
-        ResizeMode="NoResize" MouseDown="Window_MouseDown">
+        ResizeMode="NoResize" MouseDown="Window_MouseDown"
+            Icon="pack://application:,,,/Images/Taskbar.png">
     
     <Window.Resources>
         <Style x:Key="StartButtonStyle" TargetType="{x:Type Button}">
@@ -59,18 +60,24 @@
                FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#0077be"/>
         <Label Name="TeacherIDLabel" Content= "ID : " HorizontalAlignment="Center" Margin="0,65,0,0"
                FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#0077be"/>
+        
+        <!--Home Button-->
+        <Button Name="HomeButton" Width="50" Height="40" HorizontalAlignment="Right" Margin="0,10,90,0"
+                FontWeight="Bold" FontSize="14" FontFamily="Wintermesh" Foreground="#099540 "
+                Content="Home"/>
         <!--Logout Button-->
-        <Button Name="LogoutButton" Width="80" Height="40" HorizontalAlignment="Right" Margin="0,10,30,0"
-                FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#FA1B1B"
+        <Button Name="LogoutButton" Width="50" Height="40" HorizontalAlignment="Right" Margin="0,10,30,0"
+                FontWeight="Bold" FontSize="14" FontFamily="Wintermesh" Foreground="#FA1B1B"
                 Click="LogoutButton_Click"> 
             Logout
         </Button>
 
-        
+
         <Grid Name="PageGrid" Grid.Row="1" Background="Transparent">
             <Border Grid.Row="1" Margin="1,0,1,360" BorderThickness="2" BorderBrush="#DBDAD2">
                 <TextBlock Text="Select Year :" Grid.Row="1" FontWeight="Bold" FontSize="30" 
                    FontFamily="Wintermesh" Foreground="#0077be" />
+
             </Border>
             
             <ScrollViewer Grid.Row="1" Margin="0,40,0,0" Name="yeet">

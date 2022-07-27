@@ -9,5 +9,6 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("fonts/starjedi-dgrw.ttf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/taskbar.ico")]
 
 

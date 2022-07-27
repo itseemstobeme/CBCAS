@@ -77,6 +77,8 @@ namespace CBCAS
         {
             InitializeComponent();
             Student.setStudent(StudentID);
+            HomeButton.IsEnabled = false;
+            HomeButton.Foreground = Brushes.Gray;
             StudentNameLabel.Content += Student.StudentName;
             StudentIDLabel.Content += Student.StudentID;
             fillPage();

@@ -13,12 +13,14 @@
     <None Remove="Images\Logo1.png" />
     <None Remove="Images\Logo2.png" />
     <None Remove="Images\Logo3.png" />
+    <None Remove="Images\Taskbar.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Fonts\StarJedi-DGRW.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Taskbar.ico" />
     <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
     <Reference Include="MySql.Data">
       <HintPath>..\..\..\..\..\Program Files (x86)\MySQL\Connector NET 8.0\Assemblies\net6.0\MySql.Data.dll</HintPath>
@@ -26,6 +28,9 @@
     <Resource Include="Images\Logo1.png" />
     <Resource Include="Images\Logo2.png" />
     <Resource Include="Images\Logo3.png" />
+    <Resource Include="Images\Taskbar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

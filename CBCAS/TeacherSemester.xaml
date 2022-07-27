@@ -57,9 +57,14 @@
                FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#0077be"/>
         <Label Name="TeacherIDLabel" Content= "ID : " HorizontalAlignment="Center" Margin="0,65,0,0"
                FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#0077be"/>
+
+        <!--Home Button-->
+        <Button Name="HomeButton" Width="50" Height="40" HorizontalAlignment="Right" Margin="0,10,90,0"
+                FontWeight="Bold" FontSize="14" FontFamily="Wintermesh" Foreground="#099540 "
+                Click="HomeButton_Click" Content="Home"/>
         <!--Logout Button-->
-        <Button Name="LogoutButton" Width="80" Height="40" HorizontalAlignment="Right" Margin="0,10,30,0"
-                FontWeight="Bold" FontSize="20" FontFamily="Wintermesh" Foreground="#FA1B1B"
+        <Button Name="LogoutButton" Width="50" Height="40" HorizontalAlignment="Right" Margin="0,10,30,0"
+                FontWeight="Bold" FontSize="14" FontFamily="Wintermesh" Foreground="#FA1B1B"
                 Click="LogoutButton_Click">
             Logout
         </Button>

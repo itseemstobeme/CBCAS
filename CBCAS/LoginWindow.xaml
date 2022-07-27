@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="LoginWindow" Height="500" Width="350" WindowStartupLocation="CenterScreen"
         WindowStyle="None" AllowsTransparency="True" Background="Transparent"
-        ResizeMode="NoResize" MouseDown="LoginWindow_MouseDown">
+        ResizeMode="NoResize" MouseDown="LoginWindow_MouseDown"
+        Icon="Images\Taskbar.png">
 
 
     <Grid Background="Transparent">

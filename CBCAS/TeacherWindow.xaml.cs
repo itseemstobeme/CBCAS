@@ -26,6 +26,8 @@ namespace CBCAS
         public TeacherWindow()
         {
             InitializeComponent();
+            HomeButton.IsEnabled = false;
+            HomeButton.Foreground = Brushes.Gray;
             TeacherNameLabel.Content += Teacher.TeacherName;
             TeacherIDLabel.Content += Teacher.TeacherID;
             initializeButtons();
@@ -100,6 +102,11 @@ namespace CBCAS
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
             this.Close();
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
